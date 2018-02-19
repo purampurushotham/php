@@ -1,0 +1,122 @@
+
+h1 {
+margin-left: 70px;
+}
+form li {
+list-style: none;
+margin-bottom: 5px;
+}
+
+form ul li label{
+float: left;
+clear: left;
+width: 100px;
+text-align: right;
+margin-right: 10px;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:14px;
+}
+
+form ul li input, select, span {
+float: left;
+margin-bottom: 10px;
+}
+
+form textarea {
+float: left;
+width: 350px;
+height: 150px;
+}
+
+[type="submit"] {
+clear: left;
+margin: 20px 0 0 230px;
+font-size:18px
+}
+
+p {
+margin-left: 70px;
+font-weight: bold;
+}
+.val_error{
+	color: red;	
+}
+table {
+        position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+.employeeRecords{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    padding-top: 0px;
+}
+
+table, td, th {
+    border: 1px solid black;
+        padding: 15px
+}
+.rightButton{
+padding: 24px 0 0 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.-blue{
+        /* border: 1px solid #009ac8; */
+    color: #009ac8;
+    background-color: #009ac8;
+}
+.-fill {
+    border: 1px solid #939ca7;
+    color: #ffffff !important;
+    font-weight: bold;
+}
+.button{
+        border-radius: 3px;
+    min-width: 80px;
+    padding: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 11px;
+    line-height: normal;
+}
+
+th {text-align: left;}
+.test{
+	margin-left: 10px;
+}
+.wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
