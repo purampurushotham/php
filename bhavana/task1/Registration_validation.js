@@ -232,13 +232,18 @@ function AddEmployee(str) {
  document.registration.doj.value = obj['doj'];
  document.registration.dept.value = obj['department'];
  document.registration.mname.value=obj['middlename'];
- if(obj['gender'] === 'Male'){
- 	document.registration.msex.value=obj['gender'];
- 	document.registration.msex.checked = true;
+ if(document.registration.gender) {
+     document.registration.gender.value = obj['gender'];
  }
- else{
- 	document.registration.fsex.value = obj['gender']
- 	document.registration.fsex.checked = true;
+ else {
+     if (obj['gender'] === 'Male') {
+         document.registration.msex.value = obj['gender'];
+         document.registration.msex.checked = true;
+     }
+     else {
+         document.registration.fsex.value = obj['gender']
+         document.registration.fsex.checked = true;
+     }
  }
  document.registration.altemail.value = obj['alternateEmail'];
  document.registration.job.value = obj['job'];
