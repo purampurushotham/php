@@ -1,3 +1,5 @@
+var employee =JSON.parse(localStorage.getItem('employee'));
+var id= employee!==null && employee.length >0 ? employee[0]['id']: '';
 function formValidation()
 {
 var fname = document.registration.fname;
@@ -20,7 +22,10 @@ var errors ={
 	doj:document.getElementById('doj_error'),
 }
 var dateString ='fname='+fname.value+'&lname='+lname.value+'&mname'+mname.value+'&email='+email.value+'&mob='+mob.value+'&job='+job.value+'&doj='+doj.value
-+'&dept='+dept.value+'&gender='+genderValue+'&altEmail'+altEmail.value;
++'&dept='+dept.value+'&gender='+genderValue+'&altEmail='+altEmail.value;
+if(id!== ''){
+dateString = dateString + '&id='+id
+}
 if(allLetter(fname,'First Name',errors.fname))
 {
 	if(allLetter(lname,'Last Name',errors.lname))
@@ -196,6 +201,7 @@ return true;
 }
 }
 function AddEmployee(str) {
+		localStorage.setItem("employee",null)
         if (window.XMLHttpRequest) {
             // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
@@ -214,3 +220,29 @@ function AddEmployee(str) {
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send(str);
     }
+    function loadEmployee(){
+    	if(localStorage.getItem("employee") !== null){
+    		var employee =JSON.parse(localStorage.getItem('employee'));
+    		var obj = employee!== null ? employee[0]: '';
+    		if(obj !== ''){
+    	 document.registration.fname.value = obj['firstname'];
+    		document.registration.lname.value= obj['lastname'];
+ document.registration.email.value = obj['email'];
+ document.registration.mob.value = obj['mobno'];
+ document.registration.doj.value = obj['doj'];
+ document.registration.dept.value = obj['department'];
+ document.registration.mname.value=obj['middlename'];
+ if(obj['gender'] === 'Male'){
+ 	document.registration.msex.value=obj['gender'];
+ 	document.registration.msex.checked = true;
+ }
+ else{
+ 	document.registration.fsex.value = obj['gender']
+ 	document.registration.fsex.checked = true;
+ }
+ document.registration.altemail.value = obj['alternateEmail'];
+ document.registration.job.value = obj['job'];
+ localStorage.setItem("employee",null)
+}
+}
+}
