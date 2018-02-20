@@ -46,7 +46,7 @@ echo "<table>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td>" . $row['id'] . "</td>";
+    echo "<td onclick="view(' . $row['id'] .')">" . $row['id'] . "</td>";
     echo "<td>" . $row['firstname'] . "</td>";
     echo "<td>" . $row['middlename'] . "</td>";
     echo "<td>" . $row['lastname'] . "</td>";
@@ -86,6 +86,18 @@ function deleteRow($row){
             });
    
     }
+    function view($row){
+                      $.ajax({
+                             type: "GET",
+                             url: "deleteEmployee.php",
+                             data: {"delete_id":$row},
+                             success: function(response){
+                                 window.localStorage.setItem('employee',response)
+                                 alert(window.localStorage.getItem('employee'))
+                                 window.location = "viewEmployee.html"
+
+                             }
+                         });
 </script> 
 </body>
 </html>
