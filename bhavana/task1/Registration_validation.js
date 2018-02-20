@@ -221,6 +221,8 @@ function AddEmployee(str) {
         xmlhttp.send(str);
     }
     function loadEmployee(){
+        alert(document.registration.fname)
+        alert(document.registration.fname.value)
     	if(localStorage.getItem("employee") !== null){
     		var employee =JSON.parse(localStorage.getItem('employee'));
     		var obj = employee!== null ? employee[0]: '';
