@@ -220,36 +220,48 @@ function AddEmployee(str) {
         xmlhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xmlhttp.send(str);
     }
-    function loadEmployee(){
-        alert(document.registration.fname)
-        alert(document.registration.fname.value)
-    	if(localStorage.getItem("employee") !== null){
-    		var employee =JSON.parse(localStorage.getItem('employee'));
-    		var obj = employee!== null ? employee[0]: '';
-    		if(obj !== ''){
-    	 document.registration.fname.value = obj['firstname'];
-    		document.registration.lname.value= obj['lastname'];
- document.registration.email.value = obj['email'];
- document.registration.mob.value = obj['mobno'];
- document.registration.doj.value = obj['doj'];
- document.registration.dept.value = obj['department'];
- document.registration.mname.value=obj['middlename'];
- if(document.registration.gender) {
-     document.registration.gender.value = obj['gender'];
- }
- else {
-     if (obj['gender'] === 'Male') {
-         document.registration.msex.value = obj['gender'];
-         document.registration.msex.checked = true;
-     }
-     else {
-         document.registration.fsex.value = obj['gender']
-         document.registration.fsex.checked = true;
-     }
- }
- document.registration.altemail.value = obj['alternateEmail'];
- document.registration.job.value = obj['job'];
- localStorage.setItem("employee",null)
+function loadEmployee(){
+    if(localStorage.getItem("employee") !== null){
+        var employee =JSON.parse(localStorage.getItem('employee'));
+        var obj = employee!== null ? employee[0]: '';
+        if(obj !== ''){
+            document.registration.fname.value = obj['firstname'];
+            document.registration.lname.value= obj['lastname'];
+            document.registration.email.value = obj['email'];
+            document.registration.mob.value = obj['mobno'];
+            document.registration.doj.value = obj['doj'];
+            document.registration.dept.value = obj['department'];
+            document.registration.mname.value=obj['middlename'];
+            if (obj['gender'] === 'Male') {
+                document.registration.msex.value = obj['gender'];
+                document.registration.msex.checked = true;
+            }
+            else {
+                document.registration.fsex.value = obj['gender']
+                document.registration.fsex.checked = true;
+            }
+            document.registration.altemail.value = obj['alternateEmail'];
+            document.registration.job.value = obj['job'];
+            localStorage.setItem("employee",null)
+        }
+    }
 }
-}
+function getEmployee(){
+    if(localStorage.getItem("employee") !== null){
+        var employee =JSON.parse(localStorage.getItem('employee'));
+        var obj = employee!== null ? employee[0]: '';
+        if(obj !== ''){
+            document.getElementById('fname').value = obj['firstname'];
+            document.getElementById('lname').value= obj['lastname'];
+            document.getElementById('email').value = obj['email'];
+            document.getElementById('mob').value = obj['mobno'];
+            document.getElementById('doj').value = obj['doj'];
+            document.getElementById('dept').value = obj['department'];
+            document.getElementById('mname').value=obj['middlename'];
+            document.getElementById('gender').value = obj['gender'];
+            document.getElementById('altemail').value = obj['alternateEmail'];
+            document.getElementById('job').value = obj['job'];
+            localStorage.setItem("employee",null)
+        }
+    }
 }
