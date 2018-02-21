@@ -256,3 +256,24 @@ function cancelForm(){
     localStorage.setItem("employee",null)
     window.location="getEmployees.php"
 }
+function checkemail(){
+    var email = document.registration.email;
+    var email_error = document.getElementById('email_error');
+    //var altemail = document.getElementById('altemail');
+    if(ValidateEmail(email,email_error)){
+        $.ajax({
+            type: "POST",
+            url: "checkEmail.php",
+            data: {"user_email":email.value},
+            success: function(response){
+                if(response ==="OK") {
+                    return true;
+                }
+                else{
+                    email_error.textContent = response;
+                    return false;
+                }
+            }
+        });
+    }
+}

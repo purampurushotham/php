@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<body onload="loadEmployee()"
+<body onload="loadEmployee()">
 <head>
 <meta charset="utf-8">
 <title>Add Employee</title>
 <link rel='stylesheet' href='add_employee.css' type='text/css' />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="Registration_validation.js"></script>
 </head>
 <!-- <body onload="document.registration.userid.focus();"> -->
@@ -22,7 +23,7 @@
 <span class="val_error" id="lname_error"></span>
 </li>
 <li><label for="email">Email:</label></li>
-<li><input type="text" name="email" size="50" />
+<li><input type="text" name="email" size="50" onkeyup="checkemail()" />
 <span class="val_error" id="email_error"></span>
 </li>
 <li><label id="mob">Mob no:</label></li>
