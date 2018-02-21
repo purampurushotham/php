@@ -222,9 +222,11 @@ function AddEmployee(str) {
     }
 function loadEmployee(){
     if(localStorage.getItem("employee") !== null){
+        document.getElementById('actionTitle').textContent = 'Edit Employee'
         var employee =JSON.parse(localStorage.getItem('employee'));
         var obj = employee!== null ? employee[0]: '';
         if(obj !== ''){
+            document.getElementById('cancelBtn').style.display = "block";
             document.registration.fname.value = obj['firstname'];
             document.registration.lname.value= obj['lastname'];
             document.registration.email.value = obj['email'];
@@ -245,4 +247,12 @@ function loadEmployee(){
             localStorage.setItem("employee",null)
         }
     }
+    else{
+        document.getElementById('actionTitle').textContent = 'Edit Employee'
+    }
+}
+function cancelForm(){
+    document.getElementById('cancelBtn').style.display = "none";
+    localStorage.setItem("employee",null)
+    window.location="getEmployees.php"
 }
