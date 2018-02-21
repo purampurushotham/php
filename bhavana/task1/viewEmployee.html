@@ -3,21 +3,35 @@
 <body onload="getEmployee()">
 <head>
     <meta charset="utf-8">
+    <title>View Employee</title>
     <link rel='stylesheet' href='add_employee.css' type='text/css' />
-    <script src="Registration_validation.js"></script>
+    <script src="viewEmployee.js"></script>
 </head>
 <!-- <body onload="document.registration.userid.focus();"> -->
 <h1>Employee Details</h1>
-<form>
-    First Name: <p id="fname"></p>
-    Last Name: <p id="lname"></p>
-    Email:: <p id="email"></p>
-    Mob:: <p id="mob"></p>
-    Alt Email: <p id="altemail"></p>
-    Department: <p id="dept"></p>
-    Job: <p id="job"></p>
-    Gender: <p id="gender"></p>
-    Doj: <p id="doj"></p>
+<form name='registration'>
+    <ul>
+        <li><label for="fname">First Name:</label></li>
+        <li><span id="fname"></span></li>
+        <li><label for="mname">Middle Name:</label></li>
+        <li><span id="mname"></span></li>
+        <li><label for="lname">Last Name:</label></li>
+        <li><span id="lname"></span></li>
+        <li><label for="email">Email:</label></li>
+        <li><span id="email"></span></li>
+        <li><label for="mob">Mob:</label></li>
+        <li><span id="mob"></span></li>
+        <li><label for="altemail">Alternate Email:</label></li>
+        <li><span id="altemail"></span></li>
+        <li><label for="dept">Department:</label></li>
+        <li><span id="dept"></span></li>
+        <li><label for="job">Job:</label></li>
+        <li><span id="job"></span></li>
+        <li><label for="gender">Gender:</label></li>
+        <li><span id="gender"></span></li>
+        <li><label for="doj">Date of Joining:</label></li>
+        <li><span id="doj"></span></li>
+    </ul>
 </form>
 </body>
 </html>

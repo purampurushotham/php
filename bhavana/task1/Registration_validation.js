@@ -246,22 +246,3 @@ function loadEmployee(){
         }
     }
 }
-function getEmployee(){
-    if(localStorage.getItem("employee") !== null){
-        var employee =JSON.parse(localStorage.getItem('employee'));
-        var obj = employee!== null ? employee[0]: '';
-        if(obj !== ''){
-            document.getElementById('fname').value = obj['firstname'];
-            document.getElementById('lname').value= obj['lastname'];
-            document.getElementById('email').value = obj['email'];
-            document.getElementById('mob').value = obj['mobno'];
-            document.getElementById('doj').value = obj['doj'];
-            document.getElementById('dept').value = obj['department'];
-            document.getElementById('mname').value=obj['middlename'];
-            document.getElementById('gender').value = obj['gender'];
-            document.getElementById('altemail').value = obj['alternateEmail'];
-            document.getElementById('job').value = obj['job'];
-            localStorage.setItem("employee",null)
-        }
-    }
-}

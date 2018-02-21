@@ -46,7 +46,7 @@ echo "<table>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
-    echo "<td onclick="view(' . $row['id'] .')">" . $row['id'] . "</td>";
+    echo '<td onclick="view(' . $row['id'] .')">'. $row['id'] .' </td>';
     echo "<td>" . $row['firstname'] . "</td>";
     echo "<td>" . $row['middlename'] . "</td>";
     echo "<td>" . $row['lastname'] . "</td>";
@@ -98,6 +98,7 @@ function deleteRow($row){
 
                              }
                          });
+}
 </script> 
 </body>
 </html>
