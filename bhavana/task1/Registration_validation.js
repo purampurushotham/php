@@ -233,13 +233,18 @@ function loadEmployee(){
             document.registration.doj.value = obj['doj'];
             document.registration.dept.value = obj['department'];
             document.registration.mname.value=obj['middlename'];
-            if (obj['gender'] === 'Male') {
-                document.registration.radioname[0].value = obj['gender'];
-                document.registration.radioname[0].checked = true;
+            if(document.registration.gender) {
+                document.registration.gender.value = obj['gender'];
             }
             else {
-                document.registration.radioname[1].value = obj['gender']
-                document.registration.radioname[1].checked = true;
+                if (obj['gender'] === 'Male') {
+                    document.registration.radioname[0].value = obj['gender'];
+                    document.registration.radioname[0].checked = true;
+                }
+                else {
+                    document.registration.radioname[1].value = obj['gender']
+                    document.registration.radioname[1].checked = true;
+                }
             }
             document.registration.altemail.value = obj['alternateEmail'];
             document.registration.job.value = obj['job'];
