@@ -120,3 +120,12 @@ th {text-align: left;}
     -ms-flex-align: center;
     align-items: center;
 }
+.left {
+    float: left;
+    margin-right: 10px;
+}
+.right {
+    float: left;
+    margin-left: 10px;
+    margin-top: 19px;
+}
