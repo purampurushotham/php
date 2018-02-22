@@ -9,7 +9,7 @@ var mob = document.registration.mob;
 var doj = document.registration.doj;
 var dept = document.registration.dept;
 var mname = document.registration.mname;
-var mgender= document.registration.msex;
+var mgender= document.registration.radioname;
 var altEmail = document.registration.altemail;
 var genderValue = mgender[0].checked ? mgender[0].value : mgender[1].value
 var job = document.registration.job;
@@ -266,6 +266,7 @@ function checkemail(){
     //var altemail = document.getElementById('altemail');
     if(ValidateEmail(email,email_error)){
         return $.ajax({
+            async: false,
             type: "POST",
             url: "checkEmail.php",
             data: {"user_email":email.value},
