@@ -30,7 +30,7 @@ if(allLetter(fname,'First Name',errors.fname))
 {
 	if(allLetter(lname,'Last Name',errors.lname))
 {
-if(ValidateEmail(email,errors.email))
+if(emails())
 {
 if(validmob(mob,errors.mob))
 {
@@ -276,4 +276,16 @@ function checkemail(){
             }
         });
     }
+}
+function emails(){
+    var bol;
+    checkemail().done(function(response){
+        if(response === 'OK'){
+            bol = true;
+        }
+        else{
+            bol=false;
+        }
+    })
+    return bol;
 }
