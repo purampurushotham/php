@@ -260,7 +260,7 @@ function checkemail(){
     var email_error = document.getElementById('email_error');
     //var altemail = document.getElementById('altemail');
     if(ValidateEmail(email,email_error)){
-        $.ajax({
+        return $.ajax({
             type: "POST",
             url: "checkEmail.php",
             data: {"user_email":email.value},
