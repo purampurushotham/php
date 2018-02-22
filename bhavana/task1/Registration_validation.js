@@ -10,9 +10,8 @@ var doj = document.registration.doj;
 var dept = document.registration.dept;
 var mname = document.registration.mname;
 var mgender= document.registration.msex;
-var fgender= document.registration.fsex;
 var altEmail = document.registration.altemail;
-var genderValue = mgender.checked ? mgender.value: fgender.value;
+var genderValue = mgender[0].checked ? mgender[0].value : mgender[1].value
 var job = document.registration.job;
 var errors ={
 	fname: document.getElementById('fname_error'),
@@ -235,12 +234,12 @@ function loadEmployee(){
             document.registration.dept.value = obj['department'];
             document.registration.mname.value=obj['middlename'];
             if (obj['gender'] === 'Male') {
-                document.registration.msex.value = obj['gender'];
-                document.registration.msex.checked = true;
+                document.registration.radioname[0].value = obj['gender'];
+                document.registration.radioname[0].checked = true;
             }
             else {
-                document.registration.fsex.value = obj['gender']
-                document.registration.fsex.checked = true;
+                document.registration.radioname[1].value = obj['gender']
+                document.registration.radioname[1].checked = true;
             }
             document.registration.altemail.value = obj['alternateEmail'];
             document.registration.job.value = obj['job'];
