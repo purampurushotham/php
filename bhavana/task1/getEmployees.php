@@ -31,6 +31,7 @@ if(isset($_GET['delete_id']))
 }
 echo "<table>
 <tr>
+<th><span><input id='selectAll' type='checkbox' /></span></th>
 <th>ID</th>
 <th>First Name</th>
 <th>Middle Name</th>
@@ -45,7 +46,8 @@ echo "<table>
 <th>Actions</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
-    echo "<tr>";
+    echo "<tr id='" .$row['id']. "'>";					/*value= each employee id */
+	echo '<td><input type="checkbox" name="selectedemp[]" value='. $row['id'] .'></input></td>';	/*name="selectedemp[]" selectedemp[] array ivvali enduku ante nuvvu loop lo checkboxes istunav kabati, idi manaki jquery lo use avudi*/
     echo '<td onclick="view(' . $row['id'] .')">'. $row['id'] .' </td>';
     echo "<td>" . $row['firstname'] . "</td>";
     echo "<td>" . $row['middlename'] . "</td>";
@@ -64,8 +66,62 @@ while($row = mysqli_fetch_array($result)) {
 echo "</table>";
 $conn->close();($conn);
 ?>
-</div> 
+<button class="btn blue" name="btn-delete" id="btn-delete">Delete Selected</button>
+</div>
 <script>
+$(document).ready(function(){ /* jquery lo edi rayalana we will write in this ready function */
+/*function when we click on each checkbox*/
+	$("input[name='selectedemp[]']").click(function(){ /* we declare selectedemp in 'name' attribute at top rigtht we are using this. .click function is called when we click on check boxes */
+		  $.each($("input[name='selectedemp[]']"),function(index,eachObj){ /* just like for loop we are using ,here first param should be index,and second is that input element */
+			  if(eachObj.checked){					/* we have checked atteibute for input type checkbox */
+			 if(index === $("input[name='selectedemp[]']").length-1){    /* logic for selectAll check boxes  when ever length matchers we are setting it true or false*/
+			$('#selectAll')[0].checked = true; /*$('#selectAll') is id at top level checkbox. $('#selectAll') is inside th , span so it will return in array. Thats why we refer it by $('#selectAll')[0] */
+			 }
+		}
+		else{
+			$('#selectAll')[0].checked = false;
+		}
+		 })
+	})
+	/*function when we click on top level checkbox*/
+	$('#selectAll').click(function(){
+		 var id = [];
+        $.each($("input[name='selectedemp[]']"), function(index,eachObj) {
+			if(	$('#selectAll')[0].checked){		/* iteration to each checkbox and making true or false based on top level checkbox */
+			eachObj.checked = true}
+			else{
+				eachObj.checked = false;
+			}
+        })
+	});
+	/*function when we click on delete button */
+$('#btn-delete').click(function(){
+  if(confirm('Sure To Remove Records ?'))
+     {
+        var id = []; // array for storing all selected empids
+        $(':checkbox:checked').each(function(i){ // iterationg through only checked checkboxes
+        id[i] = $(this).val();			/* $(this).val() will gives each empid. need to send this array for delete operation */
+        })
+        if(id.length === 0){
+        alert('please select atleast one record');
+        }
+     else{
+      $.ajax({
+                    type:'POST',
+                     url: "bulkDelete.php",
+                     data: {id:id},
+                     success: function(response){
+						 /* after deleting successfully. instead of reloading the table. we are hiding the deleted rows */
+                     for(var i = 0; i<id.length; i++){
+                     $('tr#'+id[i]+'').css('background-color', '#ccc')
+                     $('tr#'+id[i]+'').fadeOut('slow');
+                     }
+                     }
+                 });
+     }
+	 }
+})
+})
 function deleteRow($row){
      if(confirm('Sure To Remove This Record ?'))
      {
