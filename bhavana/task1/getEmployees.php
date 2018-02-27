@@ -10,6 +10,7 @@
 <body>
 <div class="rightButton">
     <a href="registration.html" class="button -fill -blue">Add Employee</a>
+    <a class="button -fill -blue" id="btn-delete">Delete Selected</a>
 </div>
 <div class="employeeRecords">
 <?php
@@ -66,22 +67,21 @@ while($row = mysqli_fetch_array($result)) {
 echo "</table>";
 $conn->close();($conn);
 ?>
-<button class="btn blue" name="btn-delete" id="btn-delete">Delete Selected</button>
 </div>
 <script>
 $(document).ready(function(){ /* jquery lo edi rayalana we will write in this ready function */
+function enableFloatingIcons(data){
+    var enableFloat = data.length > 0 ? data.length : -1
+    data = data.filter(function (index,eachRecord){
+        if(eachRecord.checked){
+            return eachRecord
+        }
+    })
+    return enableFloat === data.length
+}
 /*function when we click on each checkbox*/
 	$("input[name='selectedemp[]']").click(function(){ /* we declare selectedemp in 'name' attribute at top rigtht we are using this. .click function is called when we click on check boxes */
-		  $.each($("input[name='selectedemp[]']"),function(index,eachObj){ /* just like for loop we are using ,here first param should be index,and second is that input element */
-			  if(eachObj.checked){					/* we have checked atteibute for input type checkbox */
-			 if(index === $("input[name='selectedemp[]']").length-1){    /* logic for selectAll check boxes  when ever length matchers we are setting it true or false*/
-			$('#selectAll')[0].checked = true; /*$('#selectAll') is id at top level checkbox. $('#selectAll') is inside th , span so it will return in array. Thats why we refer it by $('#selectAll')[0] */
-			 }
-		}
-		else{
-			$('#selectAll')[0].checked = false;
-		}
-		 })
+		 	$('#selectAll')[0].checked = enableFloatingIcons($("input[name='selectedemp[]']"));
 	})
 	/*function when we click on top level checkbox*/
 	$('#selectAll').click(function(){
@@ -134,13 +134,13 @@ function deleteRow($row){
                 url: "deleteEmployee.php",
                 data: {"delete_id":$row},
                 success: function(response){
-                    window.localStorage.setItem('employee',response) 
+                    window.localStorage.setItem('employee',response)
                     alert(window.localStorage.getItem('employee'))
                     window.location = "registration.html"
 
                 }
             });
-   
+
     }
     function view($row){
                       $.ajax({
@@ -155,6 +155,6 @@ function deleteRow($row){
                              }
                          });
 }
-</script> 
+</script>
 </body>
 </html>
