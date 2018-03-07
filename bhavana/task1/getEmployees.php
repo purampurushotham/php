@@ -81,6 +81,7 @@ function enableFloatingIcons(data){
 }
 /*function when we click on each checkbox*/
 	$("input[name='selectedemp[]']").click(function(){ /* we declare selectedemp in 'name' attribute at top rigtht we are using this. .click function is called when we click on check boxes */
+	$('#selectAll')[0].checked = enableFloatingIcons($("input[name='selectedemp[]']"));
 		var pos=0;
     	$.each($("input[name='selectedemp[]']"), function(index,eachObj) {
     			if(eachObj.checked){
@@ -88,22 +89,29 @@ function enableFloatingIcons(data){
     			}
     	})
     			if(pos > 0){
-    	$('#selectAll').removeClass('greyedOut');
-    		$('#selectAll')[0].checked = enableFloatingIcons($("input[name='selectedemp[]']"));
+    	$('#btn-delete').removeClass('greyedOut');
     	}
     	else{
-    		$('#selectAll').addClass('greyedOut');
-    			$('#selectAll')[0].checked = false
+    		$('#btn-delete').addClass('greyedOut');
     	}
 	})
 	/*function when we click on top level checkbox*/
 	$('#selectAll').click(function(){
 		 var id = [];
+		 var pos = 0;
         $.each($("input[name='selectedemp[]']"), function(index,eachObj) {
 			if(	$('#selectAll')[0].checked){		/* iteration to each checkbox and making true or false based on top level checkbox */
-			eachObj.checked = true}
+			eachObj.checked = true
+			pos++
+			}
 			else{
 				eachObj.checked = false;
+			}
+			if(pos > 0){
+			$('#btn-delete').removeClass('greyedOut');
+			}
+			else{
+			$('#btn-delete').addClass('greyedOut');
 			}
         })
 	});
