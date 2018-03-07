@@ -132,3 +132,10 @@ th {text-align: left;}
 #btn-delete{float: left;
     margin-left: 10px;
 }
+.greyedOut{
+    background-color: #b7bdc4;
+    border: #b7bdc4;
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+}

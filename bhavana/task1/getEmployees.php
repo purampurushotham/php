@@ -32,7 +32,7 @@ if(isset($_GET['delete_id']))
 }
 echo "<table>
 <tr>
-<th><span><input id='selectAll' type='checkbox' /></span></th>
+<th><span><input id='selectAll' class='greyedOut' type='checkbox' /></span></th>
 <th>ID</th>
 <th>First Name</th>
 <th>Middle Name</th>
@@ -81,7 +81,20 @@ function enableFloatingIcons(data){
 }
 /*function when we click on each checkbox*/
 	$("input[name='selectedemp[]']").click(function(){ /* we declare selectedemp in 'name' attribute at top rigtht we are using this. .click function is called when we click on check boxes */
-		 	$('#selectAll')[0].checked = enableFloatingIcons($("input[name='selectedemp[]']"));
+		var pos=0;
+    	$.each($("input[name='selectedemp[]']"), function(index,eachObj) {
+    			if(eachObj.checked){
+    				pos++;
+    			}
+    	})
+    			if(pos > 0){
+    	$('#selectAll').removeClass('greyedOut');
+    		$('#selectAll')[0].checked = enableFloatingIcons($("input[name='selectedemp[]']"));
+    	}
+    	else{
+    		$('#selectAll').addClass('greyedOut');
+    			$('#selectAll')[0].checked = false
+    	}
 	})
 	/*function when we click on top level checkbox*/
 	$('#selectAll').click(function(){
